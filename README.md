@@ -35,6 +35,20 @@ Add `data-name` to any `<img>` element and call `loadAvatars()` after the DOM is
 </script>
 ```
 
+### Via CDN (No bundler required)
+
+If you are not using a build tool, you can import it directly from unpkg:
+
+```html
+<script type="module">
+  import { loadAvatars } from '[https://unpkg.com/fn-ui-avatars/dist/index.mjs](https://unpkg.com/fn-ui-avatars/dist/index.mjs)';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadAvatars();
+  });
+</script>
+```
+
 ### Generate a single URL
 
 ```js
@@ -83,7 +97,7 @@ Returns a UI-Avatars URL string for the given name.
 | `fontSize` | `number` | `0.33` | Font size ratio (`0.1`–`1`). |
 | `length` | `number` | `2` | Number of initials to display. |
 | `rounded` | `boolean` | `true` | Circular avatar. |
-| `color` | `string` | `'fff'` | Text color (hex without `#`). |
+| `color` | `string` | `'fff'` | Text color (hex without `#`). Automatically outputs 'fff' or '000' for best contrast, unless overridden. |
 | `format` | `string` | `'svg'` | Image format: `'svg'` or `'png'`. |
 | `baseUrl` | `string` | `'https://eu.ui-avatars.com/api/'` | Custom API base URL. |
 
@@ -122,6 +136,7 @@ Each name is hashed with a simple djb2-style algorithm, and the resulting intege
 
 - The same name **always** gets the same color.
 - Different names get visually distinct colors.
+- The text color automatically adapts to be legible on light or dark backgrounds.
 - No configuration or storage required.
 
 ---
