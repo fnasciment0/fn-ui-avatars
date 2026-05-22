@@ -41,7 +41,7 @@ If you are not using a build tool, you can import it directly from unpkg:
 
 ```html
 <script type="module">
-  import { loadAvatars } from '[https://unpkg.com/fn-ui-avatars/dist/index.mjs](https://unpkg.com/fn-ui-avatars/dist/index.mjs)';
+  import { loadAvatars } from 'https://unpkg.com/fn-ui-avatars/dist/index.js';
 
   document.addEventListener('DOMContentLoaded', () => {
     loadAvatars();
