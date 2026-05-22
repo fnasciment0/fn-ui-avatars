@@ -21,7 +21,7 @@ const DEFAULT_OPTIONS: Required<AvatarOptions> = {
   rounded: true,
   color: 'fff',
   format: 'svg',
-  baseUrl: 'https://eu.ui-avatars.com/api/',
+  baseUrl: 'https://ui-avatars.com/api/',
 };
 
 /**
@@ -87,7 +87,7 @@ export function getAvatarUrl(name: string, options: AvatarOptions = {}): string 
  * Scans the DOM for matching elements and injects avatar src attributes
  * where no src is already set.
  */
-export function loadAvatars(selector: string = 'img.fn-ui-avatar', options: AvatarOptions = {}): number {
+export function loadAvatars(selector: string = 'img.fn-ui-avatars', options: AvatarOptions = {}): number {
   if (typeof document === 'undefined') {
     throw new Error('fn-ui-avatars: loadAvatars() requires a browser environment.');
   }
