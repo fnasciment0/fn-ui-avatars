@@ -1,0 +1,52 @@
+{
+  "name": "fn-ui-avatars",
+  "version": "1.0.0",
+  "description": "Automatically generate consistent, colorful avatars using UI-Avatars API",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "pretest": "npm run build",
+    "test": "node test/index.test.js",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "avatar",
+    "initials",
+    "ui-avatars",
+    "gravatar",
+    "placeholder",
+    "user-avatar"
+  ],
+  "author": "Fábio Nascimento <f_nascimento9@hotmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fnasciment0/fn-ui-avatars.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fnasciment0/fn-ui-avatars/issues"
+  },
+  "homepage": "https://github.com/fnasciment0/fn-ui-avatars#readme",
+  "engines": {
+    "node": ">=14"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3"
+  }
+}
