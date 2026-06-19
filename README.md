@@ -6,6 +6,20 @@ Auto-generate consistent, colorful initials avatars using the [UI-Avatars](https
 
 Colors are **deterministic** — the same name always produces the same background color, across sessions and devices. It also features **Smart Contrast**, automatically switching the text color between black and white to ensure maximum legibility based on the generated background.
 
+> **✨ Live Demo:** [Try the interactive generator here!](https://fn-ui-avatars-docs.vercel.app/)
+
+<br/>
+<div align="center">
+  <img src="https://ui-avatars.com/api/?name=Maria+Silva&background=4A7BCC&color=fff&rounded=true&size=128" alt="Avatar Maria" width="100" />
+  &nbsp;&nbsp;
+  <img src="https://ui-avatars.com/api/?name=John+Doe&background=FCD34D&color=000&rounded=true&size=128" alt="Avatar John" width="100" />
+  &nbsp;&nbsp;
+  <img src="https://ui-avatars.com/api/?name=Alice+Wonder&background=F87171&color=fff&rounded=true&size=128" alt="Avatar Alice" width="100" />
+  &nbsp;&nbsp;
+  <img src="https://ui-avatars.com/api/?name=Fábio+Nascimento&background=10B981&color=fff&rounded=true&size=128" alt="Avatar Fabio" width="100" />
+</div>
+<br/>
+
 ---
 
 ## Installation
@@ -136,7 +150,14 @@ Each name is hashed with a simple djb2-style algorithm, and the resulting intege
 
 - The same name **always** gets the same color.
 - Different names get visually distinct colors.
-- The text color automatically adapts to be legible on light or dark backgrounds.
+- **Smart Contrast:** Automatically adapts text to be legible on light or dark backgrounds:
+
+<div align="center">
+  <img src="https://ui-avatars.com/api/?name=Dark+Background&background=1F2937&color=fff&rounded=false&size=128" width="120" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://ui-avatars.com/api/?name=Light+Background&background=F3F4F6&color=000&rounded=false&size=128" width="120" />
+</div>
+
 - No configuration or storage required.
 
 ---
