@@ -16,7 +16,7 @@ Colors are **deterministic** — the same name always produces the same backgrou
   &nbsp;&nbsp;
   <img src="https://ui-avatars.com/api/?name=Alice+Wonder&background=F87171&color=fff&rounded=true&size=128" alt="Avatar Alice" width="100" />
   &nbsp;&nbsp;
-  <img src="https://ui-avatars.com/api/?name=Fábio+Nascimento&background=10B981&color=fff&rounded=true&size=128" alt="Avatar Fabio" width="100" />
+  <img src="https://ui-avatars.com/api/?name=Fabio+Nascimento&background=10B981&color=fff&rounded=true&size=128" alt="Avatar Fabio" width="100" />
 </div>
 <br/>
 
