@@ -20,6 +20,9 @@ Colors are **deterministic** — the same name always produces the same backgrou
 </div>
 <br/>
 
+> **⚛️ Using React?**
+> Check out the official React wrapper component: [**fn-ui-avatars-react**](https://github.com/fnasciment0/fn-ui-avatars-react) (or find it on [npm](https://www.npmjs.com/package/fn-ui-avatars-react)).
+
 ---
 
 ## Installation
