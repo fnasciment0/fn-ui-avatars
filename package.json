@@ -1,6 +1,6 @@
 {
   "name": "fn-ui-avatars",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "Automatically generate consistent, colorful avatars using UI-Avatars API",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
