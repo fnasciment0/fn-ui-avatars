@@ -10,6 +10,7 @@ export interface AvatarOptions {
   length?: number;
   rounded?: boolean;
   color?: string; // Hex color without #
+  palette?: string[]; // Optional array of hex colors to choose from
   format?: 'svg' | 'png';
   baseUrl?: string;
 }
@@ -20,6 +21,7 @@ const DEFAULT_OPTIONS: Required<AvatarOptions> = {
   length: 2,
   rounded: true,
   color: 'fff',
+  palette: [],
   format: 'svg',
   baseUrl: 'https://ui-avatars.com/api/',
 };
@@ -45,11 +47,23 @@ export function intToRGB(i: number): string {
 
 /**
  * Calculates relative YIQ luminance to decide if text should be dark or light.
+ * Supports 3 or 6 character hex colors.
  */
 function isLightColor(hex: string): boolean {
-  const r = parseInt(hex.substring(0, 2), 16);
-  const g = parseInt(hex.substring(2, 4), 16);
-  const b = parseInt(hex.substring(4, 6), 16);
+  let cleanHex = hex;
+
+  if (cleanHex.length === 3) {
+    cleanHex = cleanHex.split('').map(char => char + char).join('');
+  }
+
+  const r = parseInt(cleanHex.substring(0, 2), 16);
+  const g = parseInt(cleanHex.substring(2, 4), 16);
+  const b = parseInt(cleanHex.substring(4, 6), 16);
+
+  if (isNaN(r) || isNaN(g) || isNaN(b)) {
+    return false; // Default to dark if invalid color
+  }
+
   const yiq = (r * 299 + g * 587 + b * 114) / 1000;
   return yiq >= 128;
 }
@@ -64,8 +78,21 @@ export function getAvatarUrl(name: string, options: AvatarOptions = {}): string 
 
   const opts = { ...DEFAULT_OPTIONS, ...options };
   const encoded = name.trim().replace(/\s+/g, '+');
-  const background = intToRGB(hashCode(encoded));
-  
+
+  // Determine background color
+
+  // Validate palette colors and filter out invalid hex codes
+  const hexRegex = /^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/;
+  const validPalette = opts.palette ? opts.palette.filter(color => hexRegex.test(color)) : [];
+
+  let background: string;
+  if (validPalette.length > 0) {
+    const index = Math.abs(hashCode(encoded)) % validPalette.length;
+    background = validPalette[index].replace(/^#/, '');
+  } else {
+    background = intToRGB(hashCode(encoded));
+  }
+
   // If color not provided, automatically calculate the contrast
   const textColor = options.color ? opts.color : (isLightColor(background) ? '000' : 'fff');
 
