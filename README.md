@@ -114,7 +114,8 @@ Returns a UI-Avatars URL string for the given name.
 | `fontSize` | `number` | `0.33` | Font size ratio (`0.1`–`1`). |
 | `length` | `number` | `2` | Number of initials to display. |
 | `rounded` | `boolean` | `true` | Circular avatar. |
-| `color` | `string` | `'fff'` | Text color (hex without `#`). Automatically outputs 'fff' or '000' for best contrast, unless overridden. |
+| `color` | `string` | `'fff'` | Text color (hex with or without `#`). Automatically outputs 'fff' or '000' for best contrast, unless overridden. |
+| `palette` | `string[]` | `[]` |  An array of custom hex colors. If provided, the deterministic algorithm will pick the background color from this curated list instead of the full hex spectrum.
 | `format` | `string` | `'svg'` | Image format: `'svg'` or `'png'`. |
 | `baseUrl` | `string` | `'https://eu.ui-avatars.com/api/'` | Custom API base URL. |
 
