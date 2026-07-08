@@ -66,6 +66,27 @@ assert('different names produce different colors', diffColor1 !== diffColor2);
 assertThrows('throws on empty string', () => getAvatarUrl(''));
 assertThrows('throws on non-string input', () => getAvatarUrl(null));
 
+const urlSpecialChars = getAvatarUrl('José Conceição');
+assert('encodes special characters correctly', urlSpecialChars.includes('Jos%C3%A9+Concei%C3%A7%C3%A3o'));
+
+console.log('\nSmart Contrast (YIQ) & Color Sanitization');
+const urlContrast = getAvatarUrl('John Doe');
+assert('automatically applies fff or 000 contrast', urlContrast.includes('&color=fff') || urlContrast.includes('&color=000'));
+
+const urlColorWithHash = getAvatarUrl('John', { color: '#AABBCC' });
+const urlColorWithoutHash = getAvatarUrl('John', { color: 'AABBCC' });
+assert('removes the # symbol from color', urlColorWithHash.includes('&color=AABBCC'));
+assert('color with or without # generates same URL', urlColorWithHash === urlColorWithoutHash);
+
+console.log('\nCustom Palette');
+// 'red' and 'blue' are invalid hex formats and should be ignored
+const urlPalette = getAvatarUrl('John', { palette: ['#FF0000', 'red', '00FF00', 'blue'] });
+assert('ignores invalid colors (red/blue) and picks a valid hex', urlPalette.includes('&background=FF0000') || urlPalette.includes('&background=00FF00'));
+
+const urlAllTrash = getAvatarUrl('John', { palette: ['red', 'blue', 'invalid'] });
+const urlDefault = getAvatarUrl('John');
+assert('falls back to default hash if entire palette is invalid', urlAllTrash === urlDefault);
+
 // --- Summary ---
 console.log(`\n${'─'.repeat(40)}`);
 console.log(`  ${passed + failed} tests: ${passed} passed, ${failed} failed`);
