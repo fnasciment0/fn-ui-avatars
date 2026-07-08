@@ -9,7 +9,7 @@ export interface AvatarOptions {
   fontSize?: number;
   length?: number;
   rounded?: boolean;
-  color?: string; // Hex color without #
+  color?: string; // Hex color with or without #
   palette?: string[]; // Optional array of hex colors to choose from
   format?: 'svg' | 'png';
   baseUrl?: string;
@@ -94,7 +94,7 @@ export function getAvatarUrl(name: string, options: AvatarOptions = {}): string 
   }
 
   // If color not provided, automatically calculate the contrast
-  const textColor = options.color ? opts.color : (isLightColor(background) ? '000' : 'fff');
+  const textColor = options.color ? opts.color.replace(/^#/, '') : (isLightColor(background) ? '000' : 'fff');
 
   const query = [
     `size=${opts.size}`,
