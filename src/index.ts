@@ -9,8 +9,8 @@ export interface AvatarOptions {
   fontSize?: number;
   length?: number;
   rounded?: boolean;
-  color?: string; // Hex color with or without #
-  palette?: string[]; // Optional array of hex colors to choose from
+  color?: string; // Custom text color (hex with or without #). Overrides the default Smart Contrast.
+  palette?: string[]; // Array of custom hex colors to be used as the background
   format?: 'svg' | 'png';
   baseUrl?: string;
 }
