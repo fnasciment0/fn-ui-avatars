@@ -77,7 +77,7 @@ export function getAvatarUrl(name: string, options: AvatarOptions = {}): string 
   }
 
   const opts = { ...DEFAULT_OPTIONS, ...options };
-  const encoded = name.trim().replace(/\s+/g, '+');
+  const encoded = encodeURIComponent(name.trim().replace(/\s+/g, ' ')).replace(/%20/g, '+');
 
   // Determine background color
 
